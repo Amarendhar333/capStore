@@ -59,45 +59,6 @@ public class Product
   
   @Column(name="product_view_count")
   int viewCount;
-  
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name = "merchant_product", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = { @JoinColumn(name = "merchant_id") })
-  List<Merchant> merchantList;
-  
-  //@OneToOne(mappedBy="product")
-  //Discount discount;
-  
-  @OneToOne()
-  @JoinColumn(name="category_id")
-  Category category;
-  
-  @OneToMany(cascade=CascadeType.ALL)
-  @JoinColumn(name="feedback_id")
-  List<FeedBack> feedback;
-  
-  //@ManyToOne(fetch=FetchType.LAZY)
-  //Cart cart;
-  
-  //@ManyToOne(fetch=FetchType.LAZY)
-  //OrderDetails orderDetails;
-  
-  //@ManyToOne(fetch=FetchType.LAZY)
-  //WishList wishlist;
-  
-  public Product(Date startTime, Date endTime, String name, String description, float cost, String status,
-			int quantity, MultipartFile productImage, int viewCount, Category category) {
-		super();
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.name = name;
-		this.description = description;
-		this.cost = cost;
-		this.status = status;
-		this.quantity = quantity;
-		this.productImage = productImage;
-		this.viewCount = viewCount;
-		this.category = category;
-	}
 
 public int getId() {
 	return id;
@@ -171,22 +132,6 @@ public void setViewCount(int viewCount) {
 	this.viewCount = viewCount;
 }
 
-/*public Discount getDiscount() {
-	return discount;
-}
-
-public void setDiscount(Discount discount) {
-	this.discount = discount;
-}*/
-
-public Category getCategory() {
-	return category;
-}
-
-public void setCategory(Category category) {
-	this.category = category;
-}
-
 
 public MultipartFile getProductImage() {
 	return productImage;
@@ -196,52 +141,17 @@ public void setProductImage(MultipartFile productImage) {
 	this.productImage = productImage;
 }
 
-public List<FeedBack> getFeedback() {
-	return feedback;
-}
-
-public void setFeedback(List<FeedBack> feedback) {
-	this.feedback = feedback;
-}
 
 public Product() {
 	super();
 	// TODO Auto-generated constructor stub
 }
 
-public List<Merchant> getMerchantList() {
-	return merchantList;
-}
-
-public void setMerchantList(List<Merchant> merchantList) {
-	this.merchantList = merchantList;
-}
-
-public Product(int id, Date startTime, Date endTime, String name, String description, float cost, String status,
-		int quantity, MultipartFile productImage, int viewCount, List<Merchant> merchantList,
-		Category category, List<FeedBack> feedback) {
-	super();
-	this.id = id;
-	this.startTime = startTime;
-	this.endTime = endTime;
-	this.name = name;
-	this.description = description;
-	this.cost = cost;
-	this.status = status;
-	this.quantity = quantity;
-	this.productImage = productImage;
-	this.viewCount = viewCount;
-	this.merchantList = merchantList;
-	this.category = category;
-	this.feedback = feedback;
-}
-
 @Override
 public String toString() {
 	return "Product [id=" + id + ", startTime=" + startTime + ", endTime=" + endTime + ", name=" + name
 			+ ", description=" + description + ", cost=" + cost + ", status=" + status + ", quantity=" + quantity
-			+ ", productImage=" + productImage + ", viewCount=" + viewCount + ", merchantList=" + merchantList
-			+ ", category=" + category + ", feedback=" + feedback + "]";
+			+ ", productImage=" + productImage + ", viewCount=" + viewCount + "]";
 }
 
   

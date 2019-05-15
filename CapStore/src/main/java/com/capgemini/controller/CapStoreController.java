@@ -1,5 +1,7 @@
 package com.capgemini.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,23 +27,21 @@ public class CapStoreController
 	@Autowired
 	PromoCodeService promoCodeService;
 	
-	@PostMapping(value="/addDiscount/{id}",consumes=MediaType.APPLICATION_JSON_VALUE)
-	public boolean addDeposit(@PathVariable("id") int productId,@RequestBody Discount discount)
+	@PostMapping(value="/addDiscount",consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void addDeposit(@RequestBody Discount discount)
 	{
-		if(discountService.addDiscount(productId,discount)!=null)
-		{
-			return true;
-		}
-		return false;
+		System.out.println(discount.getDiscountStartTime());
+		discountService.addDiscount(discount);
 	}
 	
 	@PostMapping(value="/addPromo",consumes=MediaType.APPLICATION_JSON_VALUE)
-	public boolean addPromoCode(@RequestBody PromoCode promoCode)
+	public void addPromoCode(@RequestBody PromoCode promoCode)
 	{
-		if(promoCodeService.addPromoCode(promoCode)!=null)
-		{
-			return true;
-		}
-		return false;
+		System.out.println(promoCode);
+		//System.out.println(discountAmount);
+		//System.out.println(startDate);
+		//promoCode.setStartTime(startDate);
+		//promoCode.setDiscountAmount(discountAmount);
+		promoCodeService.addPromoCode(promoCode);
 	}
 }

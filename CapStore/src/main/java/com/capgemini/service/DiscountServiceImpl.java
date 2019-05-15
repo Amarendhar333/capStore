@@ -17,8 +17,9 @@ public class DiscountServiceImpl implements DiscountService
 
 	@Transactional
 	@Override
-	public Discount addDiscount(int productId, Discount discount) 
+	public Discount addDiscount( Discount discount) 
 	{
+		//discount.setProductId(productId);
 		return discountRepository.save(discount);
 	}
 
